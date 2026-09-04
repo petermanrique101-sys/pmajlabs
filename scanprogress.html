@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ScanProgress Case Study | P MAJ LABS</title>
+<meta name="description" content="How P MAJ LABS built ScanProgress, a multi-location body composition tracking platform for gyms and supplement stores, and shipped it to the App Store and Google Play."/>
+<link rel="canonical" href="https://pmajlabs.com/scanprogress.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://pmajlabs.com/scanprogress.html"/>
+<meta property="og:title" content="ScanProgress Case Study | P MAJ LABS"/>
+<meta property="og:description" content="A body composition tracking platform for gyms and supplement stores, built end to end and shipped to both app stores."/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">PM</span>
+      <span>P MAJ LABS <span class="brand-sub">LLC</span></span>
+    </a>
+    <nav class="nav">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#process">Process</a>
+      <a href="index.html#about">About</a>
+      <a class="btn btn-sm" href="index.html#contact">Start a project</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <a class="back-link" href="index.html">&larr; Back to work</a>
+      <span class="badge-live"><span class="dot"></span> Live on both app stores</span>
+      <h1>ScanProgress</h1>
+      <p class="lede">
+        A body composition tracking platform for gyms and supplement stores that run InBody
+        scanners. Built end to end, submitted to Apple and Google, and running in a live
+        retail location.
+      </p>
+      <div class="stat-strip">
+        <div class="stat"><div class="val">iOS &amp; Android</div><div class="lbl">Both stores</div></div>
+        <div class="stat"><div class="val">Universal</div><div class="lbl">iPhone &amp; iPad</div></div>
+        <div class="stat"><div class="val">Multi-location</div><div class="lbl">Architecture</div></div>
+        <div class="stat"><div class="val">End to end</div><div class="lbl">Scope</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap prose">
+
+      <h2>The problem</h2>
+      <p>
+        An InBody scanner gives a member a genuinely useful breakdown of their body
+        composition: body fat, muscle mass, body water, segmental analysis. Gyms and supplement
+        stores buy these machines specifically to give members a reason to come back and
+        measure again.
+      </p>
+      <p>
+        Then the machine prints the result on a slip of paper and the member walks out with it.
+        A week later the paper is gone. Three months later nobody can tell you whether anything
+        actually changed, which is the only question the member cared about in the first place.
+      </p>
+      <p>
+        The scanner captured the data and the business immediately lost it. Both sides lose:
+        the member has no way to see progress, and the store has no reason to bring them back.
+      </p>
+
+      <div class="callout">
+        <p>
+          <strong>The real insight:</strong> the store had already paid for the expensive part.
+          The scanner was there and the data existed. What was missing was somewhere for it
+          to live and a reason for the member to come back and add to it.
+        </p>
+      </div>
+
+      <h2>What we built</h2>
+      <p>
+        ScanProgress turns each scan into a permanent record the member can open on their
+        phone. Instead of a printout, they get a history.
+      </p>
+      <ul>
+        <li><strong>Detailed scan breakdowns.</strong> Body fat, muscle mass, body water, and the rest of the InBody metrics, rendered so a normal person can read them.</li>
+        <li><strong>Trends over time.</strong> Interactive charts across every scan, so progress is visible over months instead of guessed at.</li>
+        <li><strong>Side-by-side comparison.</strong> Any two scans directly against each other. This is the screen that makes people sign up for another one.</li>
+        <li><strong>Bio age.</strong> A single readable number derived from scan metrics, because most members want one honest answer, not twelve.</li>
+        <li><strong>Store challenges.</strong> Members compete inside their own location, which turns a solo measurement into a group activity the store can run.</li>
+        <li><strong>Location-tied accounts.</strong> Sign-up binds a member to their specific gym or store, so the data stays scoped to that business.</li>
+      </ul>
+
+      <h2>The architecture decision that mattered</h2>
+      <p>
+        The obvious build is a single-tenant app for one store. We built it multi-location from
+        the beginning instead: a member belongs to a location, and the app is aware of which
+        one they belong to at sign-up.
+      </p>
+      <p>
+        That is more work up front and it is the entire difference between a custom app for one
+        gym and a platform another gym can be added to. Retrofitting multi-tenancy onto a
+        single-tenant app later is close to a rewrite. Deciding it on day one costs a schema
+        design conversation.
+      </p>
+
+      <h3>Stack</h3>
+      <div class="stack-grid">
+        <div class="stack-item"><div class="t">Web</div><div class="v">React &amp; TypeScript</div></div>
+        <div class="stack-item"><div class="t">Backend</div><div class="v">Supabase</div></div>
+        <div class="stack-item"><div class="t">Mobile</div><div class="v">React Native</div></div>
+        <div class="stack-item"><div class="t">Hosting</div><div class="v">Vercel</div></div>
+      </div>
+
+      <h2>Shipping to the app stores</h2>
+      <p>
+        Building an app and getting an app approved are separate skills, and the second one is
+        where most projects stall. App review is not a formality. It means real privacy
+        disclosures, account deletion handling, working demo credentials for the reviewer,
+        store listing assets at exact dimensions, and a build that does not crash on a device
+        you do not own.
+      </p>
+      <p>
+        ScanProgress went through that on both platforms. It is live on the Apple App Store as
+        a universal build for iPhone and iPad, and on Google Play. It has shipped maintenance
+        releases since launch, including a fix for store selection not appearing on the sign-up
+        page, the kind of bug you only find once real people are using it.
+      </p>
+
+      <div class="callout">
+        <p>
+          <strong>Why this matters for your project:</strong> plenty of shops can build you a
+          web page. Far fewer have taken something through Apple and Google review and then
+          maintained it in production afterward. That is the part that gets skipped in a pitch
+          and then discovered six months in.
+        </p>
+      </div>
+
+      <h2>Where it stands</h2>
+      <p>
+        ScanProgress is live and in use at a working retail location, with the web app and both
+        mobile apps in production. The platform is built to add locations, which is the
+        direction it is headed.
+      </p>
+
+      <div style="margin-top:38px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="btn" href="https://apps.apple.com/us/app/scanprogress/id6761957284" target="_blank" rel="noopener">View on the App Store</a>
+        <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.scanprogress.app" target="_blank" rel="noopener">View on Google Play</a>
+        <a class="btn btn-ghost" href="https://scanprogress.com" target="_blank" rel="noopener">Visit scanprogress.com</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section-tint">
+    <div class="wrap">
+      <div class="cta">
+        <h2>Have something like this in mind?</h2>
+        <p>
+          If off-the-shelf software does not fit how your business runs, tell us what you are
+          working around. You get a straight answer about whether it is worth building.
+        </p>
+        <div class="cta-actions">
+          <a class="btn" href="mailto:hello@pmajlabs.com?subject=Project%20inquiry">Email us</a>
+          <a class="btn btn-ghost" href="index.html">Back to home</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>&copy; 2026 P MAJ LABS LLC &middot; McKinney, Texas</p>
+    <div class="footer-links">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#work">Work</a>
+      <a href="scanprogress.html">ScanProgress</a>
+      <a href="mailto:hello@pmajlabs.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
